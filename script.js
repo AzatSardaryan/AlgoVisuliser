@@ -31,6 +31,8 @@ async function bubbleSort() {
             // Red
             bars[j].style.backgroundColor = '#e74c3c';
             bars[j + 1].style.backgroundColor = '#e74c3c';
+
+            await delay(getSpeed());
             
             if (array[j] > array[j + 1]) {
                 await swap(bars, j, j + 1);
@@ -57,12 +59,16 @@ function swap(bars, idx1, idx2) {
 
 function getSpeed() {
     const speed = document.getElementById('speedRange').value;
-    return (101 - speed) * 100; // Adjust speed
+    return (101 - speed) * 10; // Adjust speed
 }
 
 function startSort() {
     console.log('started sort')
     bubbleSort();
+}
+
+function delay(ms) {
+    return new Promise(resolve=> setTimeout(resolve, ms))
 }
 
 resetArray();
