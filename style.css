@@ -1,4 +1,3 @@
-/* style.css */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -11,6 +10,8 @@ body {
 
 h1 {
     margin-top: 20px;
+    font-size: 2rem;
+    color: #333;
 }
 
 #array-container {
@@ -19,27 +20,69 @@ h1 {
     justify-content: center;
     margin: 20px 0;
     height: 300px;
-    width: 80%;
+    width: 90%; /* Increased width for better visibility */
+    max-width: 1200px; /* Set a max width to prevent overflow on larger screens */
     border: 1px solid #ddd;
     background-color: rgba(0, 255, 0, 0.1); /* Light green background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow for depth */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    overflow: hidden; /* Prevent bars from overflowing the container */
 }
 
 .bar {
     margin: 0 3px; 
     background-color: #1abc9c; /* Teal color for bars */
     width: calc(100% / 20 - 6px); 
+    transition: transform 0.5s ease-in-out; /* Smooth animation for swapping */
 }
+
 
 #controls {
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* Allows buttons to wrap on smaller screens */
 }
 
 button {
-    margin: 0 10px;
+    margin: 10px 10px;
     padding: 10px 20px;
     font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #3498db; /* Blue color for buttons */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
 }
 
 input[type=range] {
     margin-left: 10px;
+    width: 200px; /* Set a fixed width for consistency */
+}
+
+input[type=range]::-webkit-slider-thumb {
+    background-color: #3498db;
+    border: 2px solid #2980b9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type=range]::-moz-range-thumb {
+    background-color: #3498db;
+    border: 2px solid #2980b9;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+input[type=range]::-ms-thumb {
+    background-color: #3498db;
+    border: 2px solid #2980b9;
+    border-radius: 50%;
+    cursor: pointer;
 }
