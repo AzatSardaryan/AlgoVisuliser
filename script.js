@@ -1,12 +1,13 @@
 let array = [];
 const arraySize = 20;
+let isSorting = false;
 
 function resetArray() {
     array = [];
+    isSorting = false;
     for (let i = 0; i < arraySize; i++) {
         array.push(Math.floor(Math.random() * 100) + 1);
     }
-    console.log(array)
     displayArray();
 }
 
@@ -22,12 +23,13 @@ function displayArray() {
     } 
 }
 
-
 async function bubbleSort() {
+    isSorting = true;
     const bars = document.getElementsByClassName('bar');
     for (let i = 0; i < array.length - 1; i++) {
         for (let j = 0; j < array.length - i - 1; j++) {
-
+            
+            if (!isSorting) return; // Stop if reset is called
             // Highlight the bars being compared
             bars[j].style.backgroundColor = '#e74c3c'; // red
             bars[j + 1].style.backgroundColor = '#e74c3c'; // red
@@ -99,7 +101,6 @@ function getSpeed() {
 }
 
 function startSort() {
-    console.log('started sort')
     bubbleSort();
 }
 
