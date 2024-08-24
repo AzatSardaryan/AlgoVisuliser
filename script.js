@@ -53,6 +53,43 @@ async function bubbleSort() {
     bars[0].style.backgroundColor = '#2ecc71'; // green, last bar is also sorted
 }
 
+async function selectionSort() {
+    isSorting = true;
+    const bars = document.getElementsByClassName('bar');
+
+    for (let i = 0; i < array.length - 1; i++) {
+        let minIndex = i;
+        bars[minIndex].style.backgroundColor = '#e74c3c'; // Red for the current min
+
+        for (let j = i + 1; j < array.length; j++) {
+            if (!isSorting) return;
+
+            bars[j].style.backgroundColor = '#f39c12'; // Yellow for the current comparison
+            await delay(getSpeed());
+
+            if (array[j] < array[minIndex]) {
+                bars[minIndex].style.backgroundColor = '#3498db'; // Reset previous min color
+                minIndex = j;
+                bars[minIndex].style.backgroundColor = '#e74c3c'; // Red for the new min
+            } else {
+                bars[j].style.backgroundColor = '#3498db'; // Reset color if not min
+            }
+        }
+
+        if (minIndex !== i) {
+            [array[i], array[minIndex]] = [array[minIndex], array[i]];
+            await swap(bars, i, minIndex);
+        }
+
+        bars[i].style.backgroundColor = '#2ecc71'; // Green for sorted
+    }
+    bars[array.length - 1].style.backgroundColor = '#2ecc71'; // Last bar is sorted
+}
+
+function startSelectionSort() {
+    selectionSort();
+}
+
 function swap(bars, idx1, idx2) {
     return new Promise((resolve) => {
         // Get the initial positions of the bars
