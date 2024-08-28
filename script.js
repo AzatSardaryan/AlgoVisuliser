@@ -19,7 +19,6 @@ function displayArray() {
         bar.style.height = `${array[i]}%`;
         bar.classList.add('bar');
         container.appendChild(bar);
-        console.log(`Bar ${i}: ${bar.style.height}`); 
     } 
 }
 
@@ -86,10 +85,6 @@ async function selectionSort() {
     bars[array.length - 1].style.backgroundColor = '#2ecc71'; // Last bar is sorted
 }
 
-function startSelectionSort() {
-    selectionSort();
-}
-
 function swap(bars, idx1, idx2) {
     return new Promise((resolve) => {
         // Get the initial positions of the bars
@@ -111,7 +106,6 @@ function swap(bars, idx1, idx2) {
 
             // Swap the bars in the DOM by removing and reinserting them
             const parent = bars[idx1].parentNode;
-            console.log(parent)
             const bar1 = bars[idx1];
             const bar2 = bars[idx2];
 
@@ -139,6 +133,10 @@ function getSpeed() {
 
 function startSort() {
     bubbleSort();
+}
+
+function startSelectionSort() {
+    selectionSort();
 }
 
 function delay(ms) {
