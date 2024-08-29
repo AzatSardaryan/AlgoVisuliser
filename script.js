@@ -123,10 +123,6 @@ async function insertionSort() {
     isSorting = false; // Reset the sorting state
 }
 
-function startInsertionSort() {
-    insertionSort();
-}
-
 function swap(bars, idx1, idx2) {
     return new Promise((resolve) => {
         // Get the initial positions of the bars
@@ -173,8 +169,12 @@ function getSpeed() {
     return (101 - speed) * 10; // Adjust speed
 }
 
-function startSort() {
+function startBubbleSort(){
     bubbleSort();
+}
+
+function startInsertionSort() {
+    insertionSort();
 }
 
 function startSelectionSort() {
