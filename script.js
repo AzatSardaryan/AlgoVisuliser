@@ -119,7 +119,6 @@ async function insertionSort() {
     for (let i = 0; i < array.length; i++) {
         bars[i].style.backgroundColor = '#2ecc71'; // Set all bars to green
     }
-
     isSorting = false; // Reset the sorting state
 }
 
