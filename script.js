@@ -6,7 +6,7 @@ function resetArray() {
     array = [];
     isSorting = false;
     for (let i = 0; i < arraySize; i++) {
-        array.push(Math.floor(Math.random() * 100) + 1);
+      array.push(Math.floor(Math.random() * 100) + 1);
     }
     displayArray();
 }
@@ -83,6 +83,48 @@ async function selectionSort() {
         bars[i].style.backgroundColor = '#2ecc71'; // Green for sorted
     }
     bars[array.length - 1].style.backgroundColor = '#2ecc71'; // Last bar is sorted
+}
+
+async function insertionSort() {
+    isSorting = true;
+    const bars = document.getElementsByClassName('bar');
+
+    for (let i = 1; i < array.length; i++) {
+        let key = array[i];
+        let j = i - 1;
+
+        // Highlight the current key being compared
+        bars[i].style.backgroundColor = '#e74c3c'; // Red for the current key
+
+        while (j >= 0 && array[j] > key) {
+            if (!isSorting) return;
+
+            // Highlight the bar being compared with the key
+            bars[j].style.backgroundColor = '#f39c12'; // Yellow for comparison
+            await delay(getSpeed());
+
+            // Move the larger element one position to the right
+            array[j + 1] = array[j];
+            await swap(bars, j, j + 1);
+
+            j = j - 1;
+        }
+        array[j + 1] = key;
+
+        // Insert the key in its correct position
+        bars[j + 1].style.backgroundColor = '#2ecc71'; // Green for sorted
+    }
+
+    // Final pass to ensure all bars are green
+    for (let i = 0; i < array.length; i++) {
+        bars[i].style.backgroundColor = '#2ecc71'; // Set all bars to green
+    }
+
+    isSorting = false; // Reset the sorting state
+}
+
+function startInsertionSort() {
+    insertionSort();
 }
 
 function swap(bars, idx1, idx2) {
